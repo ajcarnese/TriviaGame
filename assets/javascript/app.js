@@ -1,3 +1,5 @@
+$( document ).ready(function() {
+
 // alert("hello!");
 
 var timeRemaining = 20;
@@ -59,8 +61,6 @@ var trivia = [
 //Why isn't the start button appearing?
 // Why isn't the start button responding to click when I create a button in HTML?
 
-
-
 // Timer Functions
 // this function will start the counter and remove the start button
 function start () {
@@ -85,27 +85,24 @@ function stop() {
 function timeUp() {
     currentQuestion++;
     console.log(trivia[currentQuestion].question);
-}
+};
 
 start();
 
-trivia[currentQuestion].question;
+
 // trying to get questions appended to page...
-$('#questionDiv').append('<h2>' + trivia[currentQuestion].question + '</h2>');
+$('#questionDiv').html('<h2>' + trivia[currentQuestion].question);
 // this works in console, but not in js file...why??
 console.log(trivia[currentQuestion].question);
 
-
-// var questionSection = $('<div>').attr('id','questionDiv');
-// $('triviaGame').append(questionSection);
-// $('#questionDiv').html('<h2>' + trivia[currentQuestion].question + '</h2>');
-
-
-// for (var i = 0; i < trivia.length; i++){
-
-//  // show answer choices
-// }
-
+//show answer choices in buttons
+for (var i = 0; i < trivia[i].choices.length; i++){
+var answerButton = $('<button>');
+answerButton.addClass("choiceButton");
+answerButton.attr('data-val', indexOf(trivia[currentQuestion].choices[i]));
+answerButton.html(trivia[currentQuestion].choices[i]);
+$('#answerDiv').append(answerButton);
+}
 
 //  // when an answer is chosen, show another page with the correct response & a gif
 
@@ -113,4 +110,4 @@ console.log(trivia[currentQuestion].question);
 
 // };
 
-
+});
